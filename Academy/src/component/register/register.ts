@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
      MatFormFieldModule,
      
      MatInputModule,
-     MatIconModule
+     MatIconModule ,
+      ReactiveFormsModule
 
 
    ],
@@ -26,17 +27,13 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class Register {
 
+  
 
-  fullname: string = '';
-    email: string = '';
-    mobile: string = '';
-    password: string = '';
+    detailForm: FormGroup;
 
-    onRegister() {
-        console.log("Full Name:", this.fullname);
-        console.log("Email:", this.email);
-        console.log("Username:", this.mobile);
-        console.log("Password:", this.password);
-    }
-
+  constructor(private fb: FormBuilder) {
+    this.detailForm = this.fb.group({
+      name: ['', [Validators.required, Validators.maxLength(50)]]
+    });
+  }
 }
