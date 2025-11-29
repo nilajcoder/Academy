@@ -1,0 +1,54 @@
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">Nilaj IT</div>
+
+    <ul class="nav-links">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/about">About Us</a></li>
+        <li><a routerLink="/course">Courses</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+        <li><a routerLink="/portfolio">Portfolio</a></li>
+    </ul>
+
+    <!-- Mobile Menu Icon -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Our Academy</h1>
+        <p>Learn modern technology skills and build your future with expert guidance.</p>
+
+        <form class="login-box" (ngSubmit)="onLogin()">
+            <h2>Login</h2>
+
+            <input type="text" placeholder="Enter Username" [(ngModel)]="username" name="username" required>
+
+            <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required>
+
+            <button type="submit">Login</button>
+
+            <div class="link">
+                <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
+            </div>
+        </form>
+        <button routerLink="/register" class="btn-primary">Get Started</button>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio">
+    <h2>Our Portfolio</h2>
+
+    <div class="portfolio-grid">
+        <div class="card">Web Development</div>
+        <div class="card">UI / UX Design</div>
+        <div class="card">App Development</div>
+        <div class="card">Cloud Computing</div>
+    </div>
+</section>
