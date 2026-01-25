@@ -41,9 +41,21 @@ export class Register {
     this.detailForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(50)]],
       otherBank:['sbi'],
-      interestRate:[Validators.required]
+      interestRate:[Validators.required],
+      sanction:['',Validators.required],
+      premium:[]
       
 
     });
+
+
+    
+  }
+
+
+  calculatepremium() {
+    const amount = this.detailForm.get('sanction')?.value;
+    const premium = amount * 0.05;
+    this.detailForm.get('premium')?.setValue(premium);
   }
 }
