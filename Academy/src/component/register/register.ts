@@ -33,7 +33,8 @@ export class Register {
 
   constructor(private fb: FormBuilder) {
     this.detailForm = this.fb.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]]
+      name: ['', [Validators.required, Validators.maxLength(50)]],
+      otherBank:['sbi']
     });
   }
 }
