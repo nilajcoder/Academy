@@ -7,8 +7,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
+
+
+ import { faFileLines } from '@fortawesome/free-solid-svg-icons'; 
 @Component({
   selector: 'app-register',
+   standalone: true,
   imports: [
     RouterModule ,
     CommonModule,
@@ -18,7 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
      MatInputModule,
      MatIconModule ,
       ReactiveFormsModule,
-      MatSelectModule
+      MatSelectModule,
+      FontAwesomeModule
 
 
    ],
@@ -27,6 +36,7 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrls: ['./register.css'],
 })
 export class Register {
+  
 
   
    financialYears = [
@@ -35,15 +45,23 @@ export class Register {
   { id: 3, caption: '2024–2025' },
   { id: 4, caption: '2025–2026' }
 ];
-    detailForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+    imageFile!:File
+    detailForm: FormGroup;
+    faFileLines = faFileLines; 
+  constructor(private fb: FormBuilder,
+   
+  )
+  
+   {
+    
     this.detailForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(50)]],
       otherBank:['sbi'],
       interestRate:[Validators.required],
       sanction:['',Validators.required],
-      premium:[]
+      premium:[],
+      imagefield:[null]
       
 
     });
@@ -58,4 +76,41 @@ export class Register {
     const premium = amount * 0.05;
     this.detailForm.get('premium')?.setValue(premium);
   }
+
+  
+
+   onSelectedFile(event: Event) {
+    var target = event.target as HTMLInputElement;
+
+    this.imageFile = target.files![0];
+    console.log(this.imageFile);
+    const filetype = this.imageFile.type;
+    if (filetype && filetype.startsWith('image/')) {
+      alert('This File is Image');
+    } else {
+      alert('The File not suppoted');
+      if (target) {
+        target.value = '';
+      }
+      this.detailForm.get('imagefield')?.setValue('');
+      return;
+    }
+
+    this.detailForm.get('imagefield')!.setValue(this.imageFile.name);
+
+    // const fileSize = this.detailForm.get('imagefield')?.value;
+    const fsize = this.imageFile.size;
+    if (fsize > 2000000) {
+      alert('File is More Than 2  Mb Not Supported');
+
+      if (target) {
+        target.value = '';
+      }
+      this.detailForm.get('imagefield')?.setValue('');
+    } else {
+      alert('File is Supported');
+    }
+
+    console.log(fsize);
+}
 }

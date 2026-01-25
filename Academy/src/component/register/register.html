@@ -32,7 +32,7 @@
                 <h2 class="title">Register</h2>
 
                    <!-- Name -->
-                    <div class="md:col-12 col-6">
+                    <div class="md:col-4 col-12">
                         <mat-form-field appearance="outline" floatLabel="always">
                             <mat-label>Name</mat-label>
                             <input matInput formControlName="name" maxlength="50" placeholder="Enter Name" required />
@@ -46,7 +46,7 @@
 
 
                                 <!-- Bank readonly textbox -->
-            <div class="md:col-12 col-6">
+            <div class="md:col-4 col-12">
                 <mat-form-field appearance="outline" floatLabel="always">
                     <mat-label>Bank</mat-label>
 
@@ -61,7 +61,7 @@
 
 
               <!-- Interest Type -->
-            <div class="md:col-3 col-12">
+            <div class="md:col-4 col-12">
 
                 <mat-form-field appearance="outline" floatLabel="always">
                     <mat-label>Interest Type</mat-label>
@@ -92,7 +92,7 @@
 
 
                <!-- Sanction Amount -->
-            <div class="md:col-3 col-12">
+            <div class="md:col-4 col-12">
 
                 <mat-form-field appearance="outline" floatLabel="always">
                     <mat-label>Sanction Amount</mat-label>
@@ -113,7 +113,7 @@
 
 
              <!-- Premium Amount -->
-            <div class="md:col-3 col-12">
+            <div class="md:col-4 col-12">
 
                 <mat-form-field appearance="outline" floatLabel="always">
                     <mat-label>Premium</mat-label>
@@ -132,7 +132,37 @@
             </div>
 
 
-            
+               <!-- Image -->
+            <div class="md:col-4 col-12">
+
+                <mat-form-field appearance="outline" floatLabel="always">
+                    <mat-label>Image</mat-label>
+
+                    <input matInput formControlName="imagefield" placeholder="Select Image" required />
+                   
+                    <!-- To this (Property Binding) -->
+<fa-icon [icon]="faFileLines"></fa-icon>
+
+                    <button type="button" mat-button matSuffix class="suffix-button" color="primary"
+                        (click)="sWITCH.click()">
+
+                        <input #sWITCH type="file" accept=".jpeg,.jpg,.png " (change)="onSelectedFile($event)"
+                            style="display:none;">
+
+
+                        <mat-icon>file_upload</mat-icon>
+                    </button>
+
+                    <mat-error *ngIf="detailForm.get('imagefield')">
+                        Image Field is required
+                    </mat-error>
+
+
+
+
+                </mat-form-field>
+            </div>
+
 
 
        
