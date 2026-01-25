@@ -58,7 +58,7 @@ export class Register {
     this.detailForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(50)]],
       otherBank:['sbi'],
-      interestRate:[Validators.required],
+      interestRate:['',Validators.required],
       sanction:['',Validators.required],
       premium:[],
       imagefield:[null]
