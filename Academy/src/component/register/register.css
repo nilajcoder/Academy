@@ -45,11 +45,46 @@ body {
 
 
 .register-box {
-  background-color: wheat;
-  max-width: 1100px;   /* wide enough for horizontal */
-  margin: auto;
-  padding: 30px;
-  border-radius: 8px;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+/* Ensure the grid takes full width */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+}
+
+/* Spacing for each field container */
+.md\:col-4 {
+  padding: 0.5rem;
+  flex: 0 0 auto;
+  width: 33.3333%; /* This creates the 3-column look */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .md\:col-4 {
+    width: 100%;
+  }
+}
+
+/* Making Mat-Form-Field look clean like your sketch */
+mat-form-field {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #333;
 }
 
 .title {
