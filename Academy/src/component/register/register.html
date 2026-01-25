@@ -101,6 +101,10 @@
                     (blur)="calculatepremium()"
                          required />
 
+                           <mat-error *ngIf="detailForm.get('sanction')?.hasError('required')">
+                      Sanction is required
+                    </mat-error>
+
                     <mat-icon matPrefix>Account</mat-icon>
 
 
