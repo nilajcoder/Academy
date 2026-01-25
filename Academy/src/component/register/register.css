@@ -46,10 +46,35 @@ body {
 
 .register-box {
   background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  margin-top: 20px;
+  padding: 30px;
+  border-radius: 15px;
+  /* Max width increased for 4-column comfort */
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+
+/* Ensure consistent height and alignment */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Add slight padding between the 4 boxes */
+[class*="md:col-3"] {
+  padding: 8px;
+}
+
+/* Fix for the green upload button alignment in your image */
+.upload-btn {
+  background-color: #28a745 !important;
+  color: white !important;
+  border-radius: 4px !important;
+  margin-top: -5px;
+}
+
+mat-form-field {
+  width: 100%;
 }
 
 /* Ensure the grid takes full width */
@@ -68,17 +93,9 @@ body {
   width: 33.3333%; /* This creates the 3-column look */
 }
 
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .md\:col-4 {
-    width: 100%;
-  }
-}
 
-/* Making Mat-Form-Field look clean like your sketch */
-mat-form-field {
-  width: 100%;
-}
+
+
 
 .title {
   text-align: center;
