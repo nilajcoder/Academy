@@ -9,8 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OnInit } from '@angular/core';
+import { MatNativeDateModule } from '@angular/material/core';
 
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
  import { faFileLines } from '@fortawesome/free-solid-svg-icons'; 
 @Component({
@@ -26,7 +27,9 @@ import { OnInit } from '@angular/core';
      MatIconModule ,
       ReactiveFormsModule,
       MatSelectModule,
-      FontAwesomeModule
+      FontAwesomeModule,
+      MatDatepickerModule,
+MatNativeDateModule
 
 
    ],
@@ -60,7 +63,10 @@ export class Register implements OnInit {
       interestRate:['',Validators.required],
       sanction:['',Validators.required],
       premium:[],
-      imagefield:[null]
+      imagefield:[null],
+       sanctionDate: ['', Validators.required],
+      closeDate: [''],
+
       
 
     });
@@ -85,7 +91,15 @@ export class Register implements OnInit {
     this.detailForm.get('premium')?.setValue(premium);
   }
 
-  
+  disableTyping(event: KeyboardEvent): void {
+event.preventDefault(); // Prevents typing or pasting
+}
+
+
+
+disableTypingPaste(event: ClipboardEvent): void {
+event.preventDefault(); // Blocks paste
+}
 
    onSelectedFile(event: Event) {
     var target = event.target as HTMLInputElement;
