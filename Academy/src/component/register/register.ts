@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+
 import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { OnInit } from '@angular/core';
 
-import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 
  import { faFileLines } from '@fortawesome/free-solid-svg-icons'; 
@@ -35,7 +34,7 @@ import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './register.html',
   styleUrls: ['./register.css'],
 })
-export class Register {
+export class Register implements OnInit {
   
 
   
@@ -66,9 +65,18 @@ export class Register {
 
     });
 
+    
+
 
     
   }
+
+   ngOnInit(): void {
+    this.detailForm.get('otherBank')?.disable();
+
+   }
+
+  
 
 
   calculatepremium() {
@@ -114,3 +122,4 @@ export class Register {
     console.log(fsize);
 }
 }
+
