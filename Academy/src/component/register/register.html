@@ -104,7 +104,7 @@
                             Sanction is required
                         </mat-error>
 
-                        <mat-icon matPrefix>Account</mat-icon>
+                        <mat-icon matPrefix>tag</mat-icon>
 
 
 
@@ -121,9 +121,9 @@
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>Premium</mat-label>
 
-                        <input matInput type="number" formControlName="premium" placeholder="Premium Amont" readonly />
+                        <input matInput type="number" formControlName="premium" placeholder="Premium Amount" readonly />
 
-                        <mat-icon matPrefix>Account</mat-icon>
+                      <mat-icon matPrefix>numbers</mat-icon>
 
 
 
@@ -209,7 +209,7 @@
 
 
 
-                <!-- Adhar card -->
+                <!-- Aadhar card -->
                 <div class="md:col-3 col-12">
 
                     <mat-form-field appearance="outline" floatLabel="always">
@@ -278,7 +278,7 @@
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>DOB</mat-label>
                         <input matInput [matDatepicker]="dobPicker" formControlName="dobDate" 
-                            placeholder="Select DOB Date" [max]="maxDobDate" [min]="minDobDate" readonly (keydown)="disableTyping($event)"
+                            placeholder="Select DOB Date" [max]="maxDobDate" [min]="minDobDate" (dateChange)="calculateAge()"readonly (keydown)="disableTyping($event)"
                             (paste)="disableTypingPaste($event)">
                         <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
                         <mat-datepicker #dobPicker></mat-datepicker>
@@ -294,6 +294,28 @@
 
 
 
+                               <!-- Calculated Age -->
+
+                            <div class="md:col-3 col-12">
+
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Age</mat-label>
+
+                        <input matInput type="number" formControlName="age" placeholder="Age" readonly />
+
+                        <mat-icon matPrefix>calculate</mat-icon>
+
+
+
+
+                    </mat-form-field>
+
+
+                </div>
+
+
+
+
 
 
 
@@ -304,54 +326,3 @@
 
         </form>
 
-
-
-        <!--
-  
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Email</mat-label>
-    <mat-icon matPrefix>email</mat-icon>
-    <input matInput type="email" [(ngModel)]="email" name="email" required>
-  </mat-form-field>
-
-  
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Mobile</mat-label>
-    <mat-icon matPrefix>phone</mat-icon>
-    <input matInput [(ngModel)]="mobile" name="mobile" required>
-  </mat-form-field>
-
-  
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Password</mat-label>
-    <mat-icon matPrefix>lock</mat-icon>
-    <input matInput type="password" [(ngModel)]="password" name="password" required>
-  </mat-form-field>
-
-  
-  <button mat-raised-button color="primary" class="full-width">Register</button>
-
-  <div class="link">
-    <p>Already have an account?
-      <a routerLink="/login">Login</a>
-    </p>
-  </div>
-
-        </form>
-        <button routerLink="/register" class="btn-primary">Get Started</button>
-    </div>
-</section>
-
-
-<section id="portfolio" class="portfolio">
-    <h2>Our Portfolio</h2>
-
-    <div class="portfolio-grid">
-        <div class="card">Web Development</div>
-        <div class="card">UI / UX Design</div>
-        <div class="card">App Development</div>
-        <div class="card">Cloud Computing</div>
-    </div>
-</section>
-
--->

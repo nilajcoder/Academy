@@ -89,7 +89,8 @@ this.today.getDate()
       mobileNo:['',Validators.required,
     
         Validators.pattern(/^[6-9][0-9]{9}$/)
-      ] 
+      ] ,
+      age:['']
 
       
 
@@ -108,6 +109,41 @@ this.today.getDate()
 
   
 
+
+// calculateAge(): void {
+//   const dob = this.detailForm.get('dobDate')?.value;
+//   if (!dob) return this.detailForm.get('age')?.setValue('');
+
+//   const age =
+//     new Date().getFullYear() - new Date(dob).getFullYear();
+
+//   this.detailForm.get('age')?.setValue(age);
+// }
+
+
+
+calculateAge(): void {
+  const dob = this.detailForm.get('dobDate')?.value;
+  if (!dob) {
+    this.detailForm.get('age')?.setValue('');
+    return;
+  }
+
+  const birth = new Date(dob);
+  const today = new Date();
+
+  let years = today.getFullYear() - birth.getFullYear();
+  let months = today.getMonth() - birth.getMonth();
+
+  // যদি জন্মদিন এখনও আসেনি এই বছর
+  if (months < 0 || (months === 0 && today.getDate() < birth.getDate())) {
+    years--;
+    months += 12;
+  }
+
+  const age = Number(`${years}.${months}`);
+  this.detailForm.get('age')?.setValue(age);
+}
 
   calculatepremium() {
     const amount = this.detailForm.get('sanction')?.value;
