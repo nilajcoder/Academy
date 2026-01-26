@@ -94,7 +94,7 @@ this.today.getDate()
       ] ,
       age:[''],
       loanType:['',Validators.required],
-      address: ['', [Validators.required, Validators.maxLength(200)]]
+      address: ['', [Validators.required]]
 
       
 
