@@ -55,6 +55,12 @@ this.today.getMonth(),
 this.today.getDate()
 );
 
+minDobDate = new Date(
+this.today.getFullYear() - 100,
+this.today.getMonth(),
+this.today.getDate()
+);
+
     imageFile!:File
     detailForm: FormGroup;
     faFileLines = faFileLines; 

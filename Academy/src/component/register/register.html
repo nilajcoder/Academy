@@ -278,7 +278,7 @@
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>DOB</mat-label>
                         <input matInput [matDatepicker]="dobPicker" formControlName="dobDate" 
-                            placeholder="Select DOB Date" [max]="maxDobDate" readonly (keydown)="disableTyping($event)"
+                            placeholder="Select DOB Date" [max]="maxDobDate" [min]="minDobDate" readonly (keydown)="disableTyping($event)"
                             (paste)="disableTypingPaste($event)">
                         <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
                         <mat-datepicker #dobPicker></mat-datepicker>
