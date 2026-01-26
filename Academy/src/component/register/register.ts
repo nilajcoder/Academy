@@ -66,7 +66,12 @@ export class Register implements OnInit {
       imagefield:[null],
        sanctionDate: ['', Validators.required],
       closeDate: [''],
-      aadharcard:['',Validators.required]
+      aadharcard:['',Validators.required,
+        Validators.maxLength(12),
+        Validators.minLength(12),
+        Validators.pattern(/^[0-9]{12}$/)
+
+      ]
 
       
 

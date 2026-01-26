@@ -209,23 +209,25 @@
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>Aadhar card</mat-label>
 
-                        <input matInput type="number" formControlName="aadharcard" placeholder="Enter Interest" min="12"
-                            max="12" required />
+                        <input matInput type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')" inputmode="numeric" formControlName="aadharcard" placeholder="Enter Interest" minlength="12"
+                            maxlength="12" required />
 
                         <mat-icon matPrefix>percent</mat-icon>
 
 
                         <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('required')">
-                            Interest is required
+                            Aadhar  is required
                         </mat-error>
 
-                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('min')">
+                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('minlength')||detailForm.get('aadharcard')?.hasError('maxlength') ">
                             Aadhar must be at least 12 digit
                         </mat-error>
 
-                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('max')">
-                            Aadhar must be 12 digit
+                              <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('pattern')">
+                            Aadhar  is 12 Digits Only Number
                         </mat-error>
+
+                   
                     </mat-form-field>
 
 
