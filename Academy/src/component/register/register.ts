@@ -41,11 +41,13 @@ export class Register implements OnInit {
   
 
   
-   financialYears = [
-  { id: 1, caption: '2022–2023' },
-  { id: 2, caption: '2023–2024' },
-  { id: 3, caption: '2024–2025' },
-  { id: 4, caption: '2025–2026' }
+  // Static loan type list
+loanTypeList = [
+{ loanType: 'Home Loan' },
+{ loanType: 'Personal Loan' },
+{ loanType: 'Car Loan' },
+{ loanType: 'Education Loan' },
+{ loanType: 'Business Loan' }
 ];
 
 today = new Date();
@@ -90,7 +92,8 @@ this.today.getDate()
     
         Validators.pattern(/^[6-9][0-9]{9}$/)
       ] ,
-      age:['']
+      age:[''],
+      loanType:['',Validators.required]
 
       
 

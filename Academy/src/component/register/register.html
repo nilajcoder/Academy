@@ -123,7 +123,7 @@
 
                         <input matInput type="number" formControlName="premium" placeholder="Premium Amount" readonly />
 
-                      <mat-icon matPrefix>numbers</mat-icon>
+                        <mat-icon matPrefix>numbers</mat-icon>
 
 
 
@@ -277,8 +277,9 @@
                 <div class="md:col-3 col-12">
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>DOB</mat-label>
-                        <input matInput [matDatepicker]="dobPicker" formControlName="dobDate" 
-                            placeholder="Select DOB Date" [max]="maxDobDate" [min]="minDobDate" (dateChange)="calculateAge()"readonly (keydown)="disableTyping($event)"
+                        <input matInput [matDatepicker]="dobPicker" formControlName="dobDate"
+                            placeholder="Select DOB Date" [max]="maxDobDate" [min]="minDobDate"
+                            (dateChange)="calculateAge()" readonly (keydown)="disableTyping($event)"
                             (paste)="disableTypingPaste($event)">
                         <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
                         <mat-datepicker #dobPicker></mat-datepicker>
@@ -294,9 +295,9 @@
 
 
 
-                               <!-- Calculated Age -->
+                <!-- Calculated Age -->
 
-                            <div class="md:col-3 col-12">
+                <div class="md:col-3 col-12">
 
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>Age</mat-label>
@@ -313,6 +314,23 @@
 
                 </div>
 
+                <!-- Loan Type DropDown -->
+                <div class="md:col-4 col-12">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Loan Type</mat-label>
+                        <mat-select formControlName="loanType" placeholder="Select Loan" required>
+                            <mat-option value="">--Select Loan--</mat-option>
+                            <mat-option *ngFor="let type of loanTypeList" [value]="type.loanType">
+                                {{ type.loanType }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-icon matPrefix>credit_card</mat-icon>
+                        <mat-error *ngIf="detailForm.get('loanType')?.hasError('required')">
+                            Loan is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
 
 
 
@@ -325,4 +343,3 @@
 
 
         </form>
-
