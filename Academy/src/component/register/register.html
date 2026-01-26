@@ -13,7 +13,7 @@
     </ul>
 
     <!-- Mobile Menu Icon -->
-    <div class="menu-icon" >
+    <div class="menu-icon">
         ☰
     </div>
 </nav>
@@ -25,231 +25,229 @@
         <p>Learn modern technology skills and build your future with expert guidance.</p>
 
 
-         <form [formGroup]="detailForm" autocomplete="off" class="register-box">
+        <form [formGroup]="detailForm" autocomplete="off" class="register-box">
 
-             <div class="grid p-fluid">
-             
-               
-
-                   <!-- Name -->
-                    <div class="md:col-3 col-12">
-                        <mat-form-field appearance="outline" floatLabel="always">
-                            <mat-label>Name</mat-label>
-                            <input matInput formControlName="name" maxlength="50" placeholder="Enter Name" required />
-                            <mat-icon matPrefix>person</mat-icon>
-                              <mat-error *ngIf="detailForm.get('name')?.hasError('required')">
-                        Name is required
-                    </mat-error>
-                        </mat-form-field>
-                    </div>
-                    
+            <div class="grid p-fluid">
 
 
-                                <!-- Bank readonly textbox -->
-            <div class="md:col-3 col-12">
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Bank</mat-label>
 
-                    <input matInput formControlName="otherBank" readonly />
+                <!-- Name -->
+                <div class="md:col-3 col-12">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" maxlength="50" placeholder="Enter Name" required />
+                        <mat-icon matPrefix>person</mat-icon>
+                        <mat-error *ngIf="detailForm.get('name')?.hasError('required')">
+                            Name is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
 
-                    <mat-icon matPrefix>account_balance</mat-icon>
-                </mat-form-field>
+
+
+                <!-- Bank readonly textbox -->
+                <div class="md:col-3 col-12">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Bank</mat-label>
+
+                        <input matInput formControlName="otherBank" readonly />
+
+                        <mat-icon matPrefix>account_balance</mat-icon>
+                    </mat-form-field>
+                </div>
+
+
+
+
+
+                <!-- Interest Type -->
+                <div class="md:col-3 col-12">
+
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Interest Type</mat-label>
+
+                        <input matInput type="number" formControlName="interestRate" placeholder="Enter Interest"
+                            min="1" max="99" required />
+
+                        <mat-icon matPrefix>percent</mat-icon>
+
+
+                        <mat-error *ngIf="detailForm.get('interestRate')?.hasError('required')">
+                            Interest is required
+                        </mat-error>
+
+                        <mat-error *ngIf="detailForm.get('interestRate')?.hasError('min')">
+                            Interest must be at least 2 digit
+                        </mat-error>
+
+                        <mat-error *ngIf="detailForm.get('interestRate')?.hasError('max')">
+                            Interest must be 2 digit
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+
+                </div>
+
+
+                <!-- Sanction Amount -->
+                <div class="md:col-3 col-12">
+
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Sanction Amount</mat-label>
+
+                        <input matInput type="number" formControlName="sanction" placeholder="Sanction Amount"
+                            (blur)="calculatepremium()" required />
+
+                        <mat-error *ngIf="detailForm.get('sanction')?.hasError('required')">
+                            Sanction is required
+                        </mat-error>
+
+                        <mat-icon matPrefix>Account</mat-icon>
+
+
+
+
+                    </mat-form-field>
+
+
+                </div>
+
+
+                <!-- Premium Amount -->
+                <div class="md:col-3 col-12">
+
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Premium</mat-label>
+
+                        <input matInput type="number" formControlName="premium" placeholder="Premium Amont" readonly />
+
+                        <mat-icon matPrefix>Account</mat-icon>
+
+
+
+
+                    </mat-form-field>
+
+
+                </div>
+
+
+                <!-- Image -->
+                <div class="md:col-3 col-12">
+
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Image</mat-label>
+
+                        <input matInput formControlName="imagefield" placeholder="Select Image" required />
+
+                        <!-- To this (Property Binding) -->
+                        <fa-icon [icon]="faFileLines"></fa-icon>
+
+                        <button type="button" mat-button matSuffix class="suffix-button" color="primary"
+                            (click)="sWITCH.click()">
+
+                            <input #sWITCH type="file" accept=".jpeg,.jpg,.png " (change)="onSelectedFile($event)"
+                                style="display:none;">
+
+
+                            <mat-icon>file_upload</mat-icon>
+                        </button>
+
+                        <mat-error *ngIf="detailForm.get('imagefield')">
+                            Image Field is required
+                        </mat-error>
+
+
+
+
+                    </mat-form-field>
+                </div>
+
+
+
+                <!-- Sanction Date -->
+                <div class="md:col-3 col-12">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Sanction Date</mat-label>
+                        <input matInput [matDatepicker]="fromPicker" formControlName="sanctionDate" required
+                            [max]="detailForm.get('closeDate')?.value " placeholder="Select Sanction Date " readonly
+                            (keydown)="disableTyping($event)" (paste)="disableTypingPaste($event)">
+                        <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #fromPicker></mat-datepicker>
+
+                        <mat-error *ngIf="detailForm.get('sanctionDate')?.hasError('required')">
+                            Sanction Date is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+
+                <!-- Close Date -->
+
+
+                <div class="md:col-3 col-12">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Close Date</mat-label>
+                        <input matInput [matDatepicker]="toPicker" formControlName="closeDate"
+                            [min]="detailForm.get('sanctionDate')?.value" placeholder="Select Close Date" readonly
+                            (keydown)="disableTyping($event)" (paste)="disableTypingPaste($event)">
+                        <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #toPicker></mat-datepicker>
+
+                    </mat-form-field>
+                </div>
+
+
+
+
+                <!-- Adhar card -->
+                <div class="md:col-3 col-12">
+
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Aadhar card</mat-label>
+
+                        <input matInput type="number" formControlName="aadharcard" placeholder="Enter Interest" min="12"
+                            max="12" required />
+
+                        <mat-icon matPrefix>percent</mat-icon>
+
+
+                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('required')">
+                            Interest is required
+                        </mat-error>
+
+                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('min')">
+                            Aadhar must be at least 12 digit
+                        </mat-error>
+
+                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('max')">
+                            Aadhar must be 12 digit
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+
+                </div>
+
+
+
+
+
+
+
             </div>
 
 
 
+        </form>
 
 
-              <!-- Interest Type -->
-            <div class="md:col-3 col-12">
 
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Interest Type</mat-label>
-
-                    <input matInput type="number" formControlName="interestRate" placeholder="Enter Interest" min="1"
-                        max="99" required />
-
-                    <mat-icon matPrefix>percent</mat-icon>
-
-
-                    <mat-error *ngIf="detailForm.get('interestRate')?.hasError('required')">
-                        Interest is required
-                    </mat-error>
-
-                    <mat-error *ngIf="detailForm.get('interestRate')?.hasError('min')">
-                        Interest must be at least 2 digit
-                    </mat-error>
-
-                    <mat-error *ngIf="detailForm.get('interestRate')?.hasError('max')">
-                        Interest must be 2 digit
-                    </mat-error>
-                </mat-form-field>
-
-
-
-
-            </div>
-
-
-               <!-- Sanction Amount -->
-            <div class="md:col-3 col-12">
-
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Sanction Amount</mat-label>
-
-                    <input matInput type="number" formControlName="sanction" placeholder="Sanction Amount" 
-                    (blur)="calculatepremium()"
-                         required />
-
-                           <mat-error *ngIf="detailForm.get('sanction')?.hasError('required')">
-                      Sanction is required
-                    </mat-error>
-
-                    <mat-icon matPrefix>Account</mat-icon>
-
-
-
-                  
-                </mat-form-field>
-
-
-            </div>
-
-
-             <!-- Premium Amount -->
-            <div class="md:col-3 col-12">
-
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Premium</mat-label>
-
-                    <input matInput type="number" formControlName="premium" placeholder="Premium Amont" 
-                         readonly />
-
-                    <mat-icon matPrefix>Account</mat-icon>
-
-
-
-                  
-                </mat-form-field>
-
-
-            </div>
-
-
-               <!-- Image -->
-            <div class="md:col-3 col-12">
-
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Image</mat-label>
-
-                    <input matInput formControlName="imagefield" placeholder="Select Image" required />
-                   
-                    <!-- To this (Property Binding) -->
-<fa-icon [icon]="faFileLines"></fa-icon>
-
-                    <button type="button" mat-button matSuffix class="suffix-button" color="primary"
-                        (click)="sWITCH.click()">
-
-                        <input #sWITCH type="file" accept=".jpeg,.jpg,.png " (change)="onSelectedFile($event)"
-                            style="display:none;">
-
-
-                        <mat-icon>file_upload</mat-icon>
-                    </button>
-
-                    <mat-error *ngIf="detailForm.get('imagefield')">
-                        Image Field is required
-                    </mat-error>
-
-
-
-
-                </mat-form-field>
-            </div>
-
-
-
-             <!-- Sanction Date -->
-            <div class="md:col-3 col-12">
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Sanction Date</mat-label>
-                    <input matInput [matDatepicker]="fromPicker" formControlName="sanctionDate" required
-                        [max]="detailForm.get('closeDate')?.value " placeholder="Select Sanction Date " readonly
-                        (keydown)="disableTyping($event)" (paste)="disableTypingPaste($event)">
-                    <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
-                    <mat-datepicker #fromPicker></mat-datepicker>
-
-                    <mat-error *ngIf="detailForm.get('sanctionDate')?.hasError('required')">
-                        Sanction Date is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-
-
-
-           <!-- Close Date -->
-
-
-            <div class="md:col-3 col-12">
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Close Date</mat-label>
-                    <input matInput [matDatepicker]="toPicker" formControlName="closeDate"
-                        [min]="detailForm.get('sanctionDate')?.value" placeholder="Select Close Date" readonly
-                        (keydown)="disableTyping($event)" (paste)="disableTypingPaste($event)">
-                    <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
-                    <mat-datepicker #toPicker></mat-datepicker>
-
-                </mat-form-field>
-            </div>
-
-
-
-
-               <!-- Adhar card -->
-            <div class="md:col-3 col-12">
-
-                <mat-form-field appearance="outline" floatLabel="always">
-                    <mat-label>Aadhar card</mat-label>
-
-                    <input matInput type="number" formControlName="aadharcard" placeholder="Enter Interest" min="12"
-                        max="12" required />
-
-                    <mat-icon matPrefix>percent</mat-icon>
-
-
-                    <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('required')">
-                        Interest is required
-                    </mat-error>
-
-                    <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('min')">
-                        Aadhar must be at least 12 digit
-                    </mat-error>
-
-                    <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('max')">
-                        Aadhar must be 12 digit
-                    </mat-error>
-                </mat-form-field>
-
-
-
-
-            </div>
-
-            
-
-
-
-          
-
-             </div>
-           
-
-
-         </form>
-        
-           
-
-<!--
+        <!--
   
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Email</mat-label>
