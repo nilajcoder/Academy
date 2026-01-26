@@ -209,31 +209,64 @@
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>Aadhar card</mat-label>
 
-                        <input matInput type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')" inputmode="numeric" formControlName="aadharcard" placeholder="Enter Interest" minlength="12"
-                            maxlength="12" required />
+                        <input matInput type="text" 
+                            inputmode="numeric" formControlName="aadharcard" placeholder="Enter Interest" minlength="12"
+                            maxlength="12" required pattern="\d{12}" />
 
-                        <mat-icon matPrefix>percent</mat-icon>
+                        <mat-icon matPrefix>assignment_ind</mat-icon>
 
 
                         <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('required')">
-                            Aadhar  is required
+                            Aadhar is required
                         </mat-error>
 
-                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('minlength')||detailForm.get('aadharcard')?.hasError('maxlength') ">
-                            Aadhar must be at least 12 digit
+                    
+
+                        <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('pattern')">
+                            Aadhar is 12 Digits Only Number
                         </mat-error>
 
-                              <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('pattern')">
-                            Aadhar  is 12 Digits Only Number
-                        </mat-error>
 
-                   
                     </mat-form-field>
 
 
 
 
                 </div>
+
+
+                <!-- Mobile Number -->
+                <div class="md:col-3 col-12">
+
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Mobile Number</mat-label>
+
+                        <input matInput type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                            inputmode="numeric" formControlName="mobileNo" placeholder="Enter Mobile Number"  minlength="10"
+                            maxlength="10"  pattern="[6-9][0-9]{9}" required />
+
+                        <mat-icon matPrefix>phone</mat-icon>
+
+
+                        <mat-error *ngIf="detailForm.get('mobileNo')?.hasError('required')">
+                            Mobile is required
+                        </mat-error>
+
+                   
+
+                              <mat-error *ngIf="detailForm.get('mobileNo')?.hasError('pattern')">
+                           Mobile number must be 10 digits and start with 6–9
+                        </mat-error>
+                       
+
+
+                    </mat-form-field>
+
+
+
+
+                </div>
+
 
 
 

@@ -67,10 +67,14 @@ export class Register implements OnInit {
        sanctionDate: ['', Validators.required],
       closeDate: [''],
       aadharcard:['',Validators.required,
-        Validators.maxLength(12),
-        Validators.minLength(12),
-        Validators.pattern(/^[0-9]{12}$/)
+       
+        Validators.pattern(/^\d{12}$/)
+        // Validators.pattern(/^[0-9]{12}$/)
 
+      ],
+      mobileNo:['',Validators.required,
+    
+        Validators.pattern(/^[6-9][0-9]{9}$/)
       ]
 
       
