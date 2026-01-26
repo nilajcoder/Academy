@@ -12,7 +12,7 @@ import { OnInit } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+ 
  import { faFileLines } from '@fortawesome/free-solid-svg-icons'; 
 @Component({
   selector: 'app-register',
@@ -93,7 +93,8 @@ this.today.getDate()
         Validators.pattern(/^[6-9][0-9]{9}$/)
       ] ,
       age:[''],
-      loanType:['',Validators.required]
+      loanType:['',Validators.required],
+      address: ['', [Validators.required, Validators.maxLength(200)]]
 
       
 
