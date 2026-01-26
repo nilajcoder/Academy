@@ -167,6 +167,9 @@
 
 
 
+
+
+
                 <!-- Sanction Date -->
                 <div class="md:col-3 col-12">
                     <mat-form-field appearance="outline" floatLabel="always">
@@ -203,15 +206,17 @@
 
 
 
+
+
+
                 <!-- Adhar card -->
                 <div class="md:col-3 col-12">
 
                     <mat-form-field appearance="outline" floatLabel="always">
                         <mat-label>Aadhar card</mat-label>
 
-                        <input matInput type="text" 
-                            inputmode="numeric" formControlName="aadharcard" placeholder="Enter Interest" minlength="12"
-                            maxlength="12" required pattern="\d{12}" />
+                        <input matInput type="text" inputmode="numeric" formControlName="aadharcard"
+                            placeholder="Enter Interest" minlength="12" maxlength="12" required pattern="\d{12}" />
 
                         <mat-icon matPrefix>assignment_ind</mat-icon>
 
@@ -220,7 +225,7 @@
                             Aadhar is required
                         </mat-error>
 
-                    
+
 
                         <mat-error *ngIf="detailForm.get('aadharcard')?.hasError('pattern')">
                             Aadhar is 12 Digits Only Number
@@ -242,8 +247,8 @@
                         <mat-label>Mobile Number</mat-label>
 
                         <input matInput type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-                            inputmode="numeric" formControlName="mobileNo" placeholder="Enter Mobile Number"  minlength="10"
-                            maxlength="10"  pattern="[6-9][0-9]{9}" required />
+                            inputmode="numeric" formControlName="mobileNo" placeholder="Enter Mobile Number"
+                            minlength="10" maxlength="10" pattern="[6-9][0-9]{9}" required />
 
                         <mat-icon matPrefix>phone</mat-icon>
 
@@ -252,12 +257,12 @@
                             Mobile is required
                         </mat-error>
 
-                   
 
-                              <mat-error *ngIf="detailForm.get('mobileNo')?.hasError('pattern')">
-                           Mobile number must be 10 digits and start with 6–9
+
+                        <mat-error *ngIf="detailForm.get('mobileNo')?.hasError('pattern')">
+                            Mobile number must be 10 digits and start with 6–9
                         </mat-error>
-                       
+
 
 
                     </mat-form-field>
@@ -265,6 +270,25 @@
 
 
 
+                </div>
+
+
+                <!-- Dob -->
+                <div class="md:col-3 col-12">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>DOB</mat-label>
+                        <input matInput [matDatepicker]="dobPicker" formControlName="dobDate" 
+                            placeholder="Select DOB Date" [max]="maxDobDate" readonly (keydown)="disableTyping($event)"
+                            (paste)="disableTypingPaste($event)">
+                        <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #dobPicker></mat-datepicker>
+
+                        <!-- Required -->
+                        <mat-error *ngIf="detailForm.get('dobDate')?.hasError('required')">
+                            Date of Birth is required
+                        </mat-error>
+
+                    </mat-form-field>
                 </div>
 
 

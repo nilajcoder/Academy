@@ -48,6 +48,13 @@ export class Register implements OnInit {
   { id: 4, caption: '2025–2026' }
 ];
 
+today = new Date();
+maxDobDate = new Date(
+this.today.getFullYear() - 18,
+this.today.getMonth(),
+this.today.getDate()
+);
+
     imageFile!:File
     detailForm: FormGroup;
     faFileLines = faFileLines; 
@@ -66,6 +73,7 @@ export class Register implements OnInit {
       imagefield:[null],
        sanctionDate: ['', Validators.required],
       closeDate: [''],
+      dobDate:['',Validators.required],
       aadharcard:['',Validators.required,
        
         Validators.pattern(/^\d{12}$/)
@@ -75,7 +83,7 @@ export class Register implements OnInit {
       mobileNo:['',Validators.required,
     
         Validators.pattern(/^[6-9][0-9]{9}$/)
-      ]
+      ] 
 
       
 
