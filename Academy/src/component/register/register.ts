@@ -122,7 +122,7 @@ this.today.getDate()
 
 
 
-calculateAge(): void {
+calculateAge() {
   const dob = this.detailForm.get('dobDate')?.value;
   if (!dob) {
     this.detailForm.get('age')?.setValue('');
