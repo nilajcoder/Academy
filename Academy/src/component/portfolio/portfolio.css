@@ -97,3 +97,17 @@
 .card:hover {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+th {
+  font-weight: 600;
+}

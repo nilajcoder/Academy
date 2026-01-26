@@ -35,12 +35,38 @@
 
 <!-- Portfolio Section -->
 <section id="portfolio" class="portfolio">
-    <h2>Our Portfolio</h2>
+  <h2>Our Portfolio</h2>
 
-    <div class="portfolio-grid">
-        <div class="card">Web Development</div>
-        <div class="card">UI / UX Design</div>
-        <div class="card">App Development</div>
-        <div class="card">Cloud Computing</div>
-    </div>
+  <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="full-width-table">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Weight</th>
+        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef>Symbol</th>
+        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </div>
 </section>
