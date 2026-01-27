@@ -95,8 +95,8 @@ this.today.getDate()
       age:[''],
       loanType:['',Validators.required],
       address: ['', [Validators.required]],
-      pan: ['',[Validators.required,Validators.pattern(/^[A-Z]{5}[0-9]{4}[A-Z]$/)]]
-      
+      pan: ['',[Validators.required,Validators.pattern(/^[A-Z]{5}[0-9]{4}[A-Z]$/)]],
+      vote: ['',[Validators.required,Validators.pattern(/^[A-Z]{3}[0-9]{7}$/)]]
 
     });
 
@@ -104,7 +104,7 @@ this.today.getDate()
 
 
     
-  }
+   }
 
    ngOnInit(): void {
     this.detailForm.get('otherBank')?.disable();
