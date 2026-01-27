@@ -96,7 +96,8 @@ this.today.getDate()
       loanType:['',Validators.required],
       address: ['', [Validators.required]],
       pan: ['',[Validators.required,Validators.pattern(/^[A-Z]{5}[0-9]{4}[A-Z]$/)]],
-      vote: ['',[Validators.required,Validators.pattern(/^[A-Z]{3}[0-9]{7}$/)]]
+      vote: ['',[Validators.required,Validators.pattern(/^[A-Z]{3}[0-9]{7}$/)]],
+      pin: ['',[Validators.required,Validators.pattern(/^[1-9][0-9]{5}$/)]]
 
     });
 
