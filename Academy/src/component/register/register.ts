@@ -82,16 +82,8 @@ this.today.getDate()
        sanctionDate: ['', Validators.required],
       closeDate: [''],
       dobDate:['',Validators.required],
-      aadharcard:['',Validators.required,
-       
-        Validators.pattern(/^\d{12}$/)
-        // Validators.pattern(/^[0-9]{12}$/)
-
-      ],
-      mobileNo:['',Validators.required,
-    
-        Validators.pattern(/^[6-9][0-9]{9}$/)
-      ] ,
+      aadharcard: ['',[Validators.required,Validators.pattern(/^[1-9][0-9]{11}$/)]],
+      mobileNo:['',Validators.required, Validators.pattern(/^[6-9][0-9]{9}$/)] ,
       age:[''],
       loanType:['',Validators.required],
       address: ['', [Validators.required]],
