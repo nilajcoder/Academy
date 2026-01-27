@@ -356,6 +356,23 @@
 
                     </mat-form-field>
                 </div>
+                   
+
+                <!-- Pan -->
+                  <div class="md:col-3 col-12">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Pan Number</mat-label>
+                        <input matInput formControlName="pan" maxlength="10" placeholder="Enter Pan" required />
+                        <mat-icon matPrefix>credit_card</mat-icon>
+                        <mat-error *ngIf="detailForm.get('pan')?.hasError('required')">
+                            Pan Number is required
+                        </mat-error>
+
+                         <mat-error *ngIf="detailForm.get('pan')?.hasError('pattern')">
+                            Enter valid PAN (ABCDE1234F)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
 
             </div>
 

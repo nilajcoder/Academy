@@ -94,8 +94,8 @@ this.today.getDate()
       ] ,
       age:[''],
       loanType:['',Validators.required],
-      address: ['', [Validators.required]]
-
+      address: ['', [Validators.required]],
+      pan: ['',[Validators.required,Validators.pattern(/^[A-Z]{5}[0-9]{4}[A-Z]$/)]]
       
 
     });
