@@ -4,9 +4,9 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 
 # How to Create Angular Project
-
+```bash
 ng new <project_name>
-
+```
 ## Development server
 
 To start a local development server, run:
